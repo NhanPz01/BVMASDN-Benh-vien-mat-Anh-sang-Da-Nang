@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bệnh viện Mắt Ánh Sáng Đà Nẵng – Demo website</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--royal:#2E58A8;--azure:#41A1DA;--lilac:#CDA4CD;--bg:#fff;--soft:#F3F7FC;--card:#fff;--text:#1d2a44;--muted:#5b6a86;--line:#dbe4f0;--on-royal:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--royal:#6f93d6;--bg:#0f1626;--soft:#151e33;--card:#1a2540;--text:#e8eefb;--muted:#a3b2cf;--line:#2a3858;--on-royal:#0f1626}}
+:root[data-theme="dark"]{--royal:#6f93d6;--bg:#0f1626;--soft:#151e33;--card:#1a2540;--text:#e8eefb;--muted:#a3b2cf;--line:#2a3858;--on-royal:#0f1626}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+body{margin:0;background:var(--bg);color:var(--text);font:300 16px/1.65 Saira,Helvetica,Arial,sans-serif}
+h1,h2,h3{font-weight:600;line-height:1.25;margin:0 0 .5em;color:var(--royal)}
+h1{font-size:clamp(28px,5vw,46px)}h2{font-size:clamp(24px,3.5vw,34px)}h3{font-size:18px}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:64px 0}.alt{background:var(--soft)}
+.sub{color:var(--muted);max-width:620px;margin:0 0 32px}
+.btn{display:inline-block;border:0;cursor:pointer;font:600 15px Saira,Helvetica,sans-serif;padding:13px 24px;border-radius:999px;background:var(--royal);color:var(--on-royal)}
+.btn.ghost{background:transparent;border:1.5px solid var(--royal);color:var(--royal)}
+.btn:hover{filter:brightness(1.1)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--royal);line-height:1.1}
+.logo small{display:block;font-weight:300;font-size:11px;color:var(--muted)}
+.menu{display:flex;gap:22px;font-weight:400;font-size:15px}.menu a:hover{color:var(--azure)}
+.hot{font-weight:600;color:var(--royal);font-size:14px;white-space:nowrap}
+
+.hero{background:linear-gradient(135deg,var(--soft),var(--bg));padding:56px 0 64px}
+.hero .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+@media(max-width:860px){.hero .grid{grid-template-columns:1fr}}
+.tag{display:inline-block;background:var(--lilac);color:#3a2a3a;border-radius:999px;padding:4px 14px;font-size:13px;font-weight:600;margin-bottom:14px}
+.hero p{font-size:18px;color:var(--muted);margin:0 0 24px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 10px 30px rgba(46,88,168,.12)}
+label{display:block;font-weight:600;font-size:14px;margin:0 0 6px;color:var(--text)}
+input,select{width:100%;font:300 16px Saira,Helvetica,sans-serif;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--text)}
+input:focus,select:focus{outline:2px solid var(--azure);outline-offset:1px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.f{margin-bottom:14px}
+@media(max-width:560px){.row{grid-template-columns:1fr}}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media(max-width:860px){.trust{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.trust{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.ico{width:46px;height:46px;border-radius:14px;background:var(--soft);color:var(--azure);display:grid;place-items:center;font-size:22px;margin-bottom:12px}
+.alt .ico{background:var(--bg)}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.svc{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.svc .card{transition:.2s;cursor:pointer;border-top:4px solid var(--azure)}
+.svc .card:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(46,88,168,.15)}
+.svc .more{display:inline-block;margin-top:12px;font-weight:600;color:var(--royal);font-size:14px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+@media(max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+.steps .card{position:relative;padding-top:34px}
+.steps .card::before{counter-increment:s;content:counter(s);position:absolute;top:-16px;left:20px;width:34px;height:34px;border-radius:50%;background:var(--royal);color:var(--on-royal);display:grid;place-items:center;font-weight:600}
+.book{display:grid;grid-template-columns:.8fr 1.2fr;gap:36px;align-items:start}
+@media(max-width:860px){.book{grid-template-columns:1fr}}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:8px}
+.slot{padding:9px 0;text-align:center;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text);cursor:pointer;font:400 14px Saira,Helvetica,sans-serif}
+.slot:hover{border-color:var(--azure)}.slot.on{background:var(--royal);color:var(--on-royal);border-color:var(--royal)}
+.slot:disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through}
+.err{color:#c0392b;font-size:14px;min-height:20px;margin:4px 0 8px}
+.ok{text-align:center;padding:12px 4px}.ok .tick{width:64px;height:64px;border-radius:50%;background:var(--azure);color:#fff;font-size:32px;display:grid;place-items:center;margin:0 auto 14px}
+.code{display:inline-block;background:var(--soft);border:1px dashed var(--azure);border-radius:10px;padding:6px 16px;font-weight:600;color:var(--royal);letter-spacing:1px}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media(max-width:860px){.info{grid-template-columns:1fr}}
+.map{min-height:260px;border-radius:18px;background:repeating-linear-gradient(45deg,var(--soft),var(--soft) 14px,var(--bg) 14px,var(--bg) 28px);border:1px solid var(--line);display:grid;place-items:center;text-align:center;color:var(--muted);padding:20px}
+dl{margin:0}dt{font-weight:600;color:var(--royal);margin-top:14px}dd{margin:2px 0 0;color:var(--muted)}
+.news{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.thumb{height:120px;border-radius:12px;background:linear-gradient(135deg,var(--azure),var(--lilac));margin-bottom:14px}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600;color:var(--royal)}details p{margin:10px 0 0;color:var(--muted)}
+footer{background:var(--royal);color:var(--on-royal);padding:36px 0 28px;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:underline}
+.fab{position:fixed;right:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);display:flex;flex-direction:column;gap:10px;z-index:25}
+.fab a{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:600;font-size:13px;box-shadow:0 6px 16px rgba(0,0,0,.25)}
+.demo{background:var(--lilac);color:#3a2a3a;text-align:center;font-size:13px;padding:6px 12px}
+.nav{position:relative}.menu{display:flex;align-items:center;gap:20px}
+.menu>a,.ddb{font:400 15px Saira,Helvetica,sans-serif;color:var(--text);background:none;border:0;cursor:pointer;padding:8px 0}
+.menu>a:hover,.ddb:hover{color:var(--azure)}.dd{position:relative}
+.ddm{display:none;position:absolute;top:100%;left:-12px;min-width:250px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px;box-shadow:0 12px 28px rgba(46,88,168,.18)}
+.dd:hover .ddm,.dd:focus-within .ddm{display:block}
+.ddm a{display:block;padding:9px 12px;border-radius:8px;font-size:14px}.ddm a:hover{background:var(--soft);color:var(--royal)}
+.burger{display:none;background:none;border:1.5px solid var(--line);border-radius:10px;font-size:20px;width:42px;height:42px;color:var(--royal);cursor:pointer}
+@media(max-width:980px){html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 110px)}.nav{flex-wrap:wrap;height:auto;padding-top:10px;padding-bottom:0;row-gap:2px}.nav .btn{margin-left:auto}.menu{order:3;flex:0 0 100%;width:100%;overflow-x:auto;gap:20px;white-space:nowrap;padding:0 0 2px;scrollbar-width:none}.menu::-webkit-scrollbar{display:none}.menu>a,.ddb,.dd{flex:0 0 auto}.ddm{position:fixed;top:0;left:12px;max-width:calc(100vw - 24px)}.dd:hover .ddm,.dd:focus-within .ddm{display:none}.dd.open .ddm{display:block}}
+@media(max-width:420px){.nav .btn{padding:10px 14px;font-size:14px}.logo small{display:none}}
+.pil{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.slot.on{background:var(--royal);color:var(--on-royal)}
+</style>
+</head>
+<body>
+<div class="demo">Bản demo giao diện – thông tin liên hệ, giờ làm việc, bác sĩ, giá cần được bệnh viện cung cấp và xác nhận trước khi vận hành.</div>
+<header><div class="wrap nav">
+<a href="#top" class="logo"><svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><path d="M3 20C9 9 31 9 37 20 31 31 9 31 3 20Z" fill="none" stroke="#41A1DA" stroke-width="3"/><circle cx="20" cy="20" r="6.5" fill="#2E58A8"/></svg><span>Mắt Ánh Sáng<small>Bệnh viện Mắt Đà Nẵng</small></span></a>
+<nav class="menu" id="menu" aria-label="Menu chính"><a href="#top">Trang chủ</a>
+<div class="dd"><button type="button" class="ddb">Giới thiệu ▾</button><div class="ddm"><a href="#gioi-thieu">Về Mắt Ánh Sáng Đà Nẵng</a><a href="#lien-he">Liên hệ & chỉ đường</a><a href="#tuyen-dung">Tuyển dụng</a></div></div>
+<div class="dd"><button type="button" class="ddb">Dịch vụ ▾</button><div class="ddm" id="svcmenu"></div></div>
+<a href="#uu-dai">Ưu đãi</a>
+<div class="dd"><button type="button" class="ddb">Cẩm nang ▾</button><div class="ddm"><a href="#quy-trinh">Quy trình thăm khám</a><a href="#cam-nang">Chuẩn bị trước khi khám</a><a href="#faq">Câu hỏi thường gặp</a><a href="#tin-tuc">Blog kiến thức mắt</a></div></div>
+<a href="#a-z">A–Z về mắt</a><a href="#lien-he">Liên hệ</a></nav>
+<a class="btn" href="#dat-lich">Đăng ký ngay</a>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap grid">
+<div><span class="tag">Your Vision, Our Mission</span>
+<h1>Nhìn rõ hơn mỗi ngày cùng chuyên gia nhãn khoa</h1>
+<p>Bệnh viện chuyên khoa Mắt kỹ thuật cao tại Đà Nẵng. Đặt lịch trước, không chờ bốc số, được bác sĩ đồng hành từ thăm khám đến chăm sóc sau điều trị.</p>
+<div class="cta"><a class="btn" href="#dat-lich">Đặt lịch ngay</a><a class="btn ghost" href="#dich-vu">Xem dịch vụ</a></div></div>
+<form class="panel" id="quick" aria-label="Đặt lịch nhanh">
+<h3>Đặt lịch nhanh</h3>
+<div class="f"><label for="q-name">Họ và tên</label><input id="q-name" placeholder="Nguyễn Văn A"></div>
+<div class="f"><label for="q-phone">Số điện thoại</label><input id="q-phone" type="tel" inputmode="tel" placeholder="09xx xxx xxx"></div>
+<button class="btn" type="submit" style="width:100%">Tiếp tục chọn lịch →</button>
+</form>
+</div></section>
+
+<section><div class="wrap">
+<div class="trust">
+<div class="card"><div class="ico">⏱</div><h3>Không chờ bốc số</h3><p>Đặt lịch trước, tiết kiệm thời gian và chi phí.</p></div>
+<div class="card"><div class="ico">👩‍⚕️</div><h3>Bác sĩ chuyên khoa</h3><p>Đội ngũ giàu kinh nghiệm phẫu thuật và điều trị bệnh lý mắt.</p></div>
+<div class="card"><div class="ico">🔬</div><h3>Công nghệ hiện đại</h3><p>Trang thiết bị chẩn đoán, phẫu thuật chính xác.</p></div>
+<div class="card"><div class="ico">🔒</div><h3>Bảo mật hồ sơ</h3><p>Thông tin người bệnh được bảo vệ nghiêm ngặt.</p></div>
+</div></div></section>
+
+<section id="gioi-thieu"><div class="wrap info">
+<div><h2>Về Mắt Ánh Sáng Đà Nẵng</h2><p>Bệnh viện chuyên khoa Mắt kỹ thuật cao, tập trung đội ngũ chuyên gia đầu ngành Nhãn khoa với nhiều năm kinh nghiệm phẫu thuật và điều trị các bệnh lý mắt. Chúng tôi thuộc hệ thống Mắt Ánh Sáng, đồng hành cùng bạn trên hành trình nhìn rõ hơn.</p><a class="btn ghost" href="#dat-lich">Đặt lịch tư vấn</a></div>
+<div class="pil"><div class="card"><h3>Công nghệ</h3><p>Ứng dụng công nghệ trong thăm khám và điều trị.</p></div><div class="card"><h3>Đổi mới</h3><p>Không ngừng cập nhật phương pháp mới.</p></div><div class="card"><h3>Chuyên môn</h3><p>Đội ngũ bác sĩ chuyên sâu nhãn khoa.</p></div><div class="card"><h3>Tận tâm</h3><p>Đồng hành cùng bệnh nhân từng bước.</p></div></div>
+</div></section>
+
+<section class="alt" id="dich-vu"><div class="wrap">
+<h2>Dịch vụ chuyên khoa</h2><p class="sub">Chọn dịch vụ bạn quan tâm để đặt lịch tư vấn với bác sĩ.</p>
+<div class="svc" id="svc"></div>
+</div></section>
+
+<section id="uu-dai"><div class="wrap"><div class="panel" style="display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;border-left:6px solid var(--lilac)"><div><span class="tag">Ưu đãi</span><h2 style="margin-bottom:6px">Chương trình ưu đãi</h2><p style="margin:0;color:var(--muted)">[Nội dung ưu đãi sẽ cập nhật khi bệnh viện cung cấp]</p></div><a class="btn" href="#dat-lich">Nhận tư vấn ưu đãi</a></div></div></section>
+
+<section id="dat-lich"><div class="wrap book">
+<div><h2>Đặt lịch khám trong 1 phút</h2><p class="sub">Chọn dịch vụ, ngày giờ phù hợp. Nhân viên sẽ gọi xác nhận lịch cho bạn.</p>
+<div class="card" style="margin-bottom:14px"><h3>✔ Miễn phí đặt lịch</h3><p>Không cần tài khoản, chỉ cần họ tên và số điện thoại.</p></div>
+<div class="card"><h3>📞 Cần hỗ trợ gấp?</h3><p>Gọi hotline <strong>[cập nhật số Đà Nẵng]</strong> hoặc nhắn Zalo OA của bệnh viện.</p></div></div>
+<div class="panel" id="bookbox">
+<form id="bf" novalidate>
+<div class="row"><div><label for="b-name">Họ và tên *</label><input id="b-name" autocomplete="name"></div>
+<div><label for="b-phone">Số điện thoại *</label><input id="b-phone" type="tel" inputmode="tel" autocomplete="tel"></div></div>
+<div class="row"><div><label for="b-svc">Dịch vụ *</label><select id="b-svc"></select></div>
+<div><label for="b-date">Ngày khám *</label><input id="b-date" type="date"></div></div>
+<div class="f"><label>Khung giờ *</label><div class="slots" id="slots"></div></div>
+<div class="f"><label for="b-note">Ghi chú triệu chứng (không bắt buộc)</label><input id="b-note" placeholder="Ví dụ: nhìn mờ, cộm xốn, muốn tư vấn mổ cận…"></div>
+<div class="err" id="err" role="alert"></div>
+<button class="btn" type="submit" style="width:100%">Xác nhận đặt lịch</button>
+</form></div>
+</div></section>
+
+<section class="alt" id="quy-trinh"><div class="wrap">
+<h2>Quy trình thăm khám</h2><p class="sub">Đơn giản, rõ ràng và có người đồng hành ở từng bước.</p>
+<div class="steps">
+<div class="card"><h3>Đặt lịch</h3><p>Trực tuyến, qua hotline hoặc Zalo.</p></div>
+<div class="card"><h3>Xác nhận</h3><p>Nhân viên gọi xác nhận giờ khám.</p></div>
+<div class="card"><h3>Thăm khám</h3><p>Đo thị lực, khám và tư vấn cùng bác sĩ.</p></div>
+<div class="card"><h3>Theo dõi</h3><p>Hướng dẫn chăm sóc, nhắc lịch tái khám.</p></div>
+</div></div></section>
+
+<section id="tin-tuc"><div class="wrap">
+<h2>Kiến thức sức khỏe mắt</h2><p class="sub">Nội dung giáo dục dễ hiểu từ bác sĩ (bài viết mẫu – sẽ thay bằng nội dung thật).</p>
+<div class="news">
+<a class="card" href="#dat-lich"><div class="thumb"></div><h3>Khi nào nên khám mắt định kỳ?</h3><p>Những dấu hiệu bạn không nên chủ quan.</p></a>
+<a class="card" href="#dat-lich"><div class="thumb"></div><h3>Cận thị ở trẻ em: cha mẹ cần biết gì?</h3><p>Phát hiện sớm để kiểm soát tiến triển.</p></a>
+<a class="card" href="#dat-lich"><div class="thumb"></div><h3>Chăm sóc mắt khi làm việc với màn hình</h3><p>Thói quen nhỏ giúp mắt đỡ mỏi.</p></a>
+</div></div></section>
+
+<section class="alt" id="faq"><div class="wrap" style="max-width:780px">
+<h2>Câu hỏi thường gặp</h2>
+<details><summary>Tôi có cần đặt lịch trước không?</summary><p>Đặt lịch trước giúp bạn không phải chờ bốc số và được sắp xếp bác sĩ phù hợp.</p></details>
+<details><summary>Tôi cần chuẩn bị gì khi đi khám?</summary><p>Mang theo giấy tờ tùy thân, kính đang dùng và hồ sơ khám mắt trước đây (nếu có).</p></details>
+<details><summary>Có thể đổi hoặc hủy lịch không?</summary><p>Có. Vui lòng liên hệ hotline hoặc Zalo ít nhất vài giờ trước giờ hẹn.</p></details>
+</div></section>
+
+<section id="cam-nang"><div class="wrap"><h2>Cẩm nang khách hàng</h2><p class="sub">Những điều nên biết trước, trong và sau khi đến khám.</p>
+<div class="trust" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">
+<div class="card"><h3>Trước khi đến khám</h3><ul style="margin:0;padding-left:18px;color:var(--muted);font-size:15px"><li>Mang giấy tờ tùy thân</li><li>Mang kính đang dùng và hồ sơ khám mắt cũ</li><li>Ghi lại thuốc đang sử dụng và triệu chứng</li></ul></div>
+<div class="card"><h3>Trong buổi khám</h3><ul style="margin:0;padding-left:18px;color:var(--muted);font-size:15px"><li>Đo thị lực, khám mắt theo chỉ định</li><li>Bác sĩ giải thích kết quả và hướng điều trị</li><li>Hỏi bác sĩ mọi thắc mắc của bạn</li></ul></div>
+<div class="card"><h3>Sau điều trị</h3><ul style="margin:0;padding-left:18px;color:var(--muted);font-size:15px"><li>Làm theo hướng dẫn của bác sĩ</li><li>Tái khám đúng hẹn</li><li>Liên hệ bệnh viện khi thấy bất thường</li></ul></div>
+</div></div></section>
+
+<section class="alt" id="a-z"><div class="wrap"><h2>A–Z về mắt</h2><p class="sub">Tra nhanh thuật ngữ và bệnh lý mắt thường gặp. Thông tin chỉ mang tính tham khảo, không thay thế chẩn đoán của bác sĩ.</p>
+<input id="az-q" type="search" placeholder="Tìm thuật ngữ: cận thị, glôcôm…" aria-label="Tìm thuật ngữ" style="max-width:420px;margin-bottom:14px">
+<div class="slots" id="az-l" style="margin-bottom:18px;grid-template-columns:repeat(auto-fill,minmax(56px,1fr))"></div>
+<div class="news" id="az-r"></div></div></section>
+
+<section id="lien-he"><div class="wrap info">
+<div><h2>Liên hệ & chỉ đường</h2>
+<dl><dt>Địa chỉ</dt><dd>[Địa chỉ bệnh viện tại Đà Nẵng – cần cập nhật]</dd>
+<dt>Hotline</dt><dd>[Số hotline – cần cập nhật]</dd>
+<dt>Giờ làm việc</dt><dd>[Cần cập nhật]</dd>
+<dt id="tuyen-dung">Tuyển dụng</dt><dd>[Email hoặc biểu mẫu nhận hồ sơ – cần cập nhật]</dd>
+<dt>Kênh chính thức</dt><dd><a href="https://www.facebook.com/BenhvienMatAnhSangDaNang" target="_blank" rel="noopener">Fanpage Facebook</a> · dananglighteye.com</dd></dl></div>
+<div class="map">Vị trí Google Maps sẽ được nhúng tại đây<br>(sau khi có địa chỉ chính thức)</div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><div><strong>Bệnh viện Mắt Ánh Sáng Đà Nẵng</strong><br>Thuộc hệ thống Mắt Ánh Sáng · Your Vision, Our Mission</div><div>© 2026 · Bản demo thiết kế · <a href="#top">Lên đầu trang</a></div></div></footer>
+
+<div class="fab"><a href="#dat-lich" style="background:#2E58A8" aria-label="Đặt lịch">Đặt</a><a href="#lien-he" style="background:#41A1DA" aria-label="Zalo / gọi">Zalo</a></div>
+
+<script>
+var S=[["👁","Phẫu thuật khúc xạ","Xóa cận, viễn, loạn thị bằng công nghệ hiện đại."],["🔍","Thay thủy tinh thể (Phaco)","Điều trị đục thủy tinh thể, phục hồi tầm nhìn."],["🩺","Điều trị bệnh võng mạc","Chẩn đoán và theo dõi bệnh lý đáy mắt."],["📋","Tầm soát mắt","Phát hiện sớm nguy cơ, bảo vệ thị lực."],["📏","Đo thị lực & kiểm tra mắt","Đo khúc xạ, kiểm tra tổng quát."],["✨","Tạo hình & trung phẫu mắt","Điều trị các vấn đề mi và vùng quanh mắt."],["🌙","Kính chỉnh hình giác mạc Ortho-K","Kiểm soát cận thị, đặc biệt ở trẻ em."]];
+var $=function(i){return document.getElementById(i)};
+var sv=$("svc"),sel=$("b-svc");
+S.forEach(function(s,i){
+ sv.insertAdjacentHTML("beforeend",'<div class="card" data-i="'+i+'"><div class="ico">'+s[0]+'</div><h3>'+s[1]+'</h3><p>'+s[2]+'</p><span class="more">Đặt lịch dịch vụ này →</span></div>');
+ sel.insertAdjacentHTML("beforeend","<option>"+s[1]+"</option>");
+});
+sel.insertAdjacentHTML("afterbegin",'<option value="">Chọn dịch vụ…</option>');sel.value="";
+sv.addEventListener("click",function(e){var c=e.target.closest(".card");if(!c)return;sel.value=S[c.dataset.i][1];$("dat-lich").scrollIntoView()});
+var d=$("b-date"),t=new Date();t.setDate(t.getDate()+1);
+function iso(x){return x.getFullYear()+"-"+String(x.getMonth()+1).padStart(2,"0")+"-"+String(x.getDate()).padStart(2,"0")}
+d.min=iso(new Date());d.value=iso(t);
+var times=["07:30","08:00","08:30","09:00","09:30","10:00","10:30","11:00","13:30","14:00","14:30","15:00","15:30","16:00"],pick="";
+function draw(){
+ var h=$("slots");h.innerHTML="";pick="";
+ var seed=d.value.split("-").join("")*1;
+ times.forEach(function(x,i){
+  var b=document.createElement("button");b.type="button";b.className="slot";b.textContent=x;
+  b.disabled=((seed+i*7)%9===0);
+  b.onclick=function(){pick=x;[].forEach.call(h.children,function(c){c.classList.remove("on")});b.classList.add("on")};
+  h.appendChild(b)});
+}
+d.addEventListener("change",draw);draw();
+$("quick").addEventListener("submit",function(e){e.preventDefault();$("b-name").value=$("q-name").value;$("b-phone").value=$("q-phone").value;$("dat-lich").scrollIntoView();$("b-svc").focus()});
+$("bf").addEventListener("submit",function(e){
+ e.preventDefault();
+ var n=$("b-name").value.trim(),p=$("b-phone").value.replace(/[\s.\-]/g,""),er=$("err");
+ if(!n)return er.textContent="Vui lòng nhập họ và tên.";
+ if(!/^(0|\+84)\d{9}$/.test(p))return er.textContent="Số điện thoại chưa đúng (ví dụ 0905123456).";
+ if(!sel.value)return er.textContent="Vui lòng chọn dịch vụ.";
+ if(!d.value)return er.textContent="Vui lòng chọn ngày khám.";
+ if(!pick)return er.textContent="Vui lòng chọn khung giờ.";
+ var code="MAS-"+Math.random().toString(36).slice(2,7).toUpperCase(),dp=d.value.split("-").reverse().join("/");
+ $("bookbox").innerHTML='<div class="ok"><div class="tick">✓</div><h3>Đặt lịch thành công!</h3><p>Cảm ơn <strong>'+n.replace(/[<>&]/g,"")+'</strong>. Chúng tôi sẽ gọi xác nhận qua số <strong>'+p+'</strong>.</p><p>'+sel.value+' · '+pick+' · '+dp+'</p><p><span class="code">'+code+'</span></p><p style="font-size:13px;color:var(--muted)">(Bản demo: dữ liệu chưa được gửi đi.)</p><button class="btn ghost" onclick="location.reload()">Đặt lịch khác</button></div>';
+});
+var sm=$("svcmenu");
+S.forEach(function(s){var a=document.createElement("a");a.href="#dat-lich";a.textContent=s[1];a.onclick=function(){sel.value=s[1]};sm.appendChild(a)});
+var mn=$("menu");
+function closeDD(){[].forEach.call(mn.querySelectorAll(".dd.open"),function(x){x.classList.remove("open")})}
+[].forEach.call(mn.querySelectorAll(".ddb"),function(b){b.addEventListener("click",function(){var dd=b.parentNode,was=dd.classList.contains("open"),m=dd.querySelector(".ddm");closeDD();if(was)return;dd.classList.add("open");if(matchMedia("(max-width:980px)").matches){var r=b.getBoundingClientRect();m.style.top=(r.bottom+4)+"px";m.style.left=Math.max(12,Math.min(r.left,innerWidth-262))+"px"}else{m.style.top=m.style.left=""}})});
+mn.addEventListener("click",function(e){if(e.target.tagName==="A")closeDD()});
+document.addEventListener("click",function(e){if(!mn.contains(e.target))closeDD()});
+mn.addEventListener("scroll",closeDD);
+var G=[["C","Cận thị","Nhìn gần rõ nhưng nhìn xa mờ, do hình ảnh hội tụ trước võng mạc."],["Đ","Đục thủy tinh thể","Thủy tinh thể mất độ trong suốt gây nhìn mờ, thường gặp ở người lớn tuổi."],["G","Giác mạc","Lớp màng trong suốt phía trước mắt, giữ vai trò hội tụ ánh sáng."],["G","Glôcôm (cườm nước)","Nhóm bệnh tổn thương thần kinh thị giác, thường liên quan nhãn áp cao; cần phát hiện sớm."],["K","Khô mắt","Mắt thiếu hoặc không giữ được nước mắt, gây cộm xốn và mỏi mắt."],["L","Lão thị","Giảm khả năng điều tiết theo tuổi, khó nhìn gần."],["L","Loạn thị","Hình ảnh bị méo hoặc nhòe do bề mặt giác mạc hoặc thủy tinh thể không đều."],["V","Viêm kết mạc","Viêm lớp màng mỏng phủ tròng trắng và lòng mi, gây đỏ mắt, chảy ghèn."],["V","Viễn thị","Nhìn xa khá rõ nhưng nhìn gần mờ, hình ảnh hội tụ sau võng mạc."],["V","Võng mạc","Lớp tế bào thần kinh ở đáy mắt tiếp nhận ánh sáng và truyền tín hiệu lên não."]];
+var azL=$("az-l"),azR=$("az-r"),azQ=$("az-q"),azA="";
+function azDraw(){var q=azQ.value.trim().toLowerCase();azR.innerHTML=G.filter(function(g){return(!azA||g[0]===azA)&&(!q||(g[1]+" "+g[2]).toLowerCase().indexOf(q)>-1)}).map(function(g){return'<div class="card"><h3>'+g[1]+'</h3><p>'+g[2]+'</p></div>'}).join("")||'<p class="sub">Chưa có thuật ngữ phù hợp. Bạn có thể hỏi bác sĩ khi đặt lịch.</p>'}
+[""].concat(G.map(function(g){return g[0]}).filter(function(x,i,a){return a.indexOf(x)===i})).forEach(function(l){var b=document.createElement("button");b.type="button";b.className="slot"+(l?"":" on");b.textContent=l||"Tất cả";b.onclick=function(){azA=l;[].forEach.call(azL.children,function(c){c.classList.remove("on")});b.classList.add("on");azDraw()};azL.appendChild(b)});
+azQ.addEventListener("input",azDraw);azDraw();
+</script>
+</body>
+</html>
